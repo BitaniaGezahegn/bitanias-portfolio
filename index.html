@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitania's Digital Experience Hub</title>
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Inter:wght@400&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Inter:wght@400&display=swap">
+    
+    <!-- Critical CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/nav.css">
+    
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="preload" href="css/about.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/about.css"></noscript>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <!-- Navigation links for desktop -->
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li class="cta-nav-item"><a href="#contact" class="nav-cta">Contact Me</a></li>
+        </ul>
+        
+        <!-- Scroll progress indicator -->
+        <div class="scroll-progress"></div>
+    </nav>
+    
+    <!-- Background container with gradient -->
+    <div id="bg-effect">
+        <div class="gradient-bg"></div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <p class="signature">Crafted with care by Bitania Gezahegn</p>
+            <h1 class="animate-text">Beautiful Websites. Meaningful Experiences.</h1>
+            <p class="subheading">I build clean, fast, and modern websites that help businesses stand out, connect with clients, and grow with confidence.</p>
+            
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Let's Work Together</a>
+                <a href="#work" class="btn btn-secondary">View My Work</a>
+            </div>
+        </div>
+
+        <div class="scroll-hint" id="scroll-indicator">
+            <span>Scroll to Learn More</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="section">
+        <div class="section-content">
+            <div class="section-header fade-in">
+                <h2>About Me</h2>
+                <p class="section-subheading">Who's behind the code?</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <!-- Profile with SVG avatar -->
+                    <div class="profile-container fade-in">
+                        <div class="profile-circle">
+                            <object data="assets/profile.svg" type="image/svg+xml" width="150" height="150"></object>
+                        </div>
+                        
+                        <div>
+                            <h3 style="font-family: 'Clash Display', sans-serif; font-size: 1.8rem; margin-bottom: 0.5rem; color: white;">Bitania Gezahegn</h3>
+                            <p style="font-size: 1.2rem; color: #6AE2FF; margin-bottom: 0;">Web Developer & Designer</p>
+                        </div>
+                    </div>
+                    
+                    <p class="fade-in">I'm passionate about building websites that don't just look good — they work hard for your business. My approach combines clean code with thoughtful design to create experiences that resonate with users.</p>
+                    
+                    <p class="fade-in">Whether it's a personal brand or a local shop, I focus on creating clean, responsive websites that speak to your audience and turn visitors into customers.</p>
+                    
+                    <p class="fade-in">Currently based in Ethiopia, I'm studying Web Development & Database Administration while building my freelance career one project at a time.</p>
+                </div>
+                
+                <div class="skills-container fade-in">
+                    <h3>Skills & Tools</h3>
+                    <div class="skill-categories">
+                        <div class="skill-category frontend">
+                            <h4>Frontend</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">HTML5</span>
+                                <span class="skill-tag">CSS3/SASS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Responsive Design</span>
+                                <span class="skill-tag">UI/UX</span>
+                            </div>
+                        </div>
+                        <div class="skill-category backend">
+                            <h4>Backend</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">PHP</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">REST APIs</span>
+                            </div>
+                        </div>
+                        <div class="skill-category tools">
+                            <h4>Tools & Platforms</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">VS Code</span>
+                                <span class="skill-tag">Git/GitHub</span>
+                                <span class="skill-tag">WordPress</span>
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quote-container fade-in">
+                    <blockquote>
+                        Great websites build trust — and trust builds business.
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main JavaScript - loaded at the end for performance -->
+    <script src="js/main.js" defer></script>
+    <!-- Load navigation script directly to ensure mobile menu works -->
+    <script src="js/nav.js" defer></script>
+    
+    <!-- Direct fix for navigation highlighting issue -->
+    <script>
+        // Run immediately after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            // Force remove active class from all links
+            function clearAllActive() {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+            }
+            
+            // Clear on page load
+            clearAllActive();
+            
+            // Set Home as default active link
+            const homeLink = document.querySelector('.nav-links a[href="#hero"]');
+            if (homeLink) {
+                homeLink.classList.add('active');
+            }
+            
+            // Add click handlers to each link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // First remove all active classes
+                    clearAllActive();
+                    
+                    // Then add active class only to clicked link
+                    this.classList.add('active');
+                });
+            });
+            
+            // Also clear on scroll with debouncing
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(function() {
+                    // Get current URL hash
+                    const hash = window.location.hash;
+                    
+                    // If there's a hash, activate corresponding link
+                    if (hash) {
+                        clearAllActive();
+                        const activeLink = document.querySelector(`.nav-links a[href="${hash}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                        }
+                    } else {
+                        // If no hash (at the top), highlight Home
+                        clearAllActive();
+                        if (homeLink && window.scrollY < 100) {
+                            homeLink.classList.add('active');
+                        }
+                    }
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html> 
