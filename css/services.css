@@ -59,24 +59,33 @@
 }
 
 .service-card {
-    background: rgba(20, 20, 30, 0.4);
-    border: 1px solid rgba(106, 226, 255, 0.2);
+    background: rgba(20, 20, 30, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 2.5rem;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.2),
+        inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
 
 .service-card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(106, 226, 255, 0.2);
-    border-color: rgba(106, 226, 255, 0.4);
+    background: rgba(20, 20, 30, 0.35);
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(106, 226, 255, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
-.service-card::before {
+.service-card .gradient-overlay {
     content: '';
     position: absolute;
     top: 0;
@@ -90,6 +99,7 @@
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: -1;
+    pointer-events: none;
 }
 
 .service-card::after {
@@ -99,7 +109,7 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
     opacity: 0;
     transform: scale(0.5);
     transition: opacity 0.4s ease, transform 0.4s ease;
@@ -107,7 +117,31 @@
     pointer-events: none;
 }
 
+/* Add light reflection for glassmorphism effect */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: all 0.75s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
 .service-card:hover::before {
+    left: 150%;
+}
+
+.service-card:hover .gradient-overlay {
     opacity: 1;
 }
 
