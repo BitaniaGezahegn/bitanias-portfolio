@@ -36,9 +36,9 @@
 
 ### 🛠 Services Grid
 
-#### 💻 Web Design & Development
+#### 🛒 WordPress Setup & Customization
 
-> I’ll design and build a fast, modern, and mobile-friendly website tailored to your business goals. Whether it’s a landing page or a full website, it’ll leave a strong first impression.
+> Need a WordPress site? I can install, configure, and customize your theme to match your brand — from blog to e-commerce.
 
 ---
 
@@ -48,15 +48,15 @@
 
 ---
 
-#### 🔍 SEO Optimization
+#### 💻 Web Design & Development
 
-> I’ll optimize your site to rank better on Google and bring in more organic traffic — helping the right people find you, at the right time.
+> I’ll design and build a fast, modern, and mobile-friendly website tailored to your business goals. Whether it’s a landing page or a full website, it’ll leave a strong first impression.
 
 ---
 
-#### 🛒 WordPress Setup & Customization *(optional if you offer WP services)*
+#### 🔍 SEO Optimization
 
-> Need a WordPress site? I can install, configure, and customize your theme to match your brand — from blog to e-commerce.
+> I’ll optimize your site to rank better on Google and bring in more organic traffic — helping the right people find you, at the right time.
 
 ---
 

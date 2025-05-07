@@ -4,49 +4,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitania's Digital Experience Hub</title>
-    
+
     <!-- Preload critical fonts -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Inter:wght@400&display=swap" as="style">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Inter:wght@400&display=swap">
-    
+
     <!-- Critical CSS -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/hero.css">
-    <link rel="stylesheet" href="css/nav.css">
-    
+
     <!-- Non-critical CSS loaded asynchronously -->
     <link rel="preload" href="css/about.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="css/about.css"></noscript>
+    <link rel="preload" href="css/services.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/services.css"></noscript>
+    <link rel="preload" href="css/benefits.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/benefits.css"></noscript>
+
+    <!-- Simple navigation styles -->
+    <style>
+        .simple-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: rgba(13, 18, 29, 0.6);
+            backdrop-filter: blur(5px);
+            padding: 0.75rem 2rem;
+            z-index: 100;
+            display: flex;
+            justify-content: flex-end;
+            width: auto;
+            border-bottom-left-radius: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu a:hover {
+            color: #6AE2FF;
+        }
+
+        .nav-menu a.active {
+            color: #6AE2FF;
+        }
+
+        .nav-cta {
+            background-color: rgba(106, 226, 255, 0.8);
+            color: #0D121D !important;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .nav-cta:hover {
+            background-color: #6AE2FF;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 200;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        /* Remove padding from hero section in desktop view */
+        #hero {
+            padding-top: 0;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 1rem;
+                top: 1rem;
+            }
+
+            .nav-menu {
+                position: fixed;
+                flex-direction: column;
+                align-items: center;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                padding-top: 5rem;
+                background-color: rgba(13, 18, 29, 0.95);
+                backdrop-filter: blur(10px);
+                transition: right 0.3s ease;
+                gap: 1.5rem;
+            }
+
+            .nav-menu.show {
+                right: 0;
+            }
+
+            .simple-nav {
+                width: 100%;
+                justify-content: flex-end;
+                padding: 1rem;
+                border-radius: 0;
+            }
+
+            /* Add padding to the hero section in mobile view */
+            #hero {
+                padding-top: 3.5rem;
+            }
+
+            /* Hamburger animation */
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -6px);
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation bar -->
-    <nav class="navbar">
-        <!-- Navigation links for desktop -->
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About Me</a></li>
+    <!-- Simple Navigation Bar -->
+    <nav class="simple-nav">
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#benefits">Benefits</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li class="cta-nav-item"><a href="#contact" class="nav-cta">Contact Me</a></li>
+            <li><a href="#projects">Work</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
         </ul>
-        
-        <!-- Scroll progress indicator -->
-        <div class="scroll-progress"></div>
     </nav>
-    
+
     <!-- Background container with gradient -->
     <div id="bg-effect">
         <div class="gradient-bg"></div>
     </div>
-    
+
     <!-- Hero Section -->
     <section id="hero">
         <div class="hero-content">
             <p class="signature">Crafted with care by Bitania Gezahegn</p>
             <h1 class="animate-text">Beautiful Websites. Meaningful Experiences.</h1>
             <p class="subheading">I build clean, fast, and modern websites that help businesses stand out, connect with clients, and grow with confidence.</p>
-            
+
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Let's Work Together</a>
                 <a href="#work" class="btn btn-secondary">View My Work</a>
@@ -68,28 +202,28 @@
                 <h2>About Me</h2>
                 <p class="section-subheading">Who's behind the code?</p>
             </div>
-            
+
             <div class="about-content">
                 <div class="about-text">
                     <!-- Profile with SVG avatar -->
                     <div class="profile-container fade-in">
                         <div class="profile-circle">
-                            <object data="assets/profile.svg" type="image/svg+xml" width="150" height="150"></object>
+                            <img src="assets/images/profile-photo.jpg" alt="Bitania Gezahegn" width="150" height="150" style="border-radius: 50%; object-fit: cover;">
                         </div>
-                        
+
                         <div>
                             <h3 style="font-family: 'Clash Display', sans-serif; font-size: 1.8rem; margin-bottom: 0.5rem; color: white;">Bitania Gezahegn</h3>
                             <p style="font-size: 1.2rem; color: #6AE2FF; margin-bottom: 0;">Web Developer & Designer</p>
                         </div>
                     </div>
-                    
+
                     <p class="fade-in">I'm passionate about building websites that don't just look good — they work hard for your business. My approach combines clean code with thoughtful design to create experiences that resonate with users.</p>
-                    
+
                     <p class="fade-in">Whether it's a personal brand or a local shop, I focus on creating clean, responsive websites that speak to your audience and turn visitors into customers.</p>
-                    
+
                     <p class="fade-in">Currently based in Ethiopia, I'm studying Web Development & Database Administration while building my freelance career one project at a time.</p>
                 </div>
-                
+
                 <div class="skills-container fade-in">
                     <h3>Skills & Tools</h3>
                     <div class="skill-categories">
@@ -126,7 +260,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="quote-container fade-in">
                     <blockquote>
                         Great websites build trust — and trust builds business.
@@ -136,70 +270,177 @@
         </div>
     </section>
 
+    <!-- Services Section -->
+    <section id="services">
+        <div class="services-container">
+            <div class="services-header fade-in">
+                <h2>What I Can Do For You</h2>
+                <p class="services-subheading">Services built to grow your brand, save you time, and impress your clients.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- WordPress Setup & Customization -->
+                <div class="service-card wordpress-card fade-in-up">
+                    <div class="service-icon">🛒</div>
+                    <h3 class="service-title">WordPress Setup & Customization</h3>
+                    <p class="service-description">Need a WordPress site? I can install, configure, and customize your theme to match your brand — from blog to e-commerce.</p>
+                </div>
+
+                <!-- Website Hosting & Setup -->
+                <div class="service-card hosting-card fade-in-up">
+                    <div class="service-icon">🌐</div>
+                    <h3 class="service-title">Website Hosting & Setup</h3>
+                    <p class="service-description">Don't worry about the tech. I'll help you buy a domain, set up fast hosting, and make sure your site is live and secure — so you can focus on what matters.</p>
+                </div>
+
+                <!-- Web Design & Development -->
+                <div class="service-card webdesign-card fade-in-up">
+                    <div class="service-icon">💻</div>
+                    <h3 class="service-title">Web Design & Development</h3>
+                    <p class="service-description">I'll design and build a fast, modern, and mobile-friendly website tailored to your business goals. Whether it's a landing page or a full website, it'll leave a strong first impression.</p>
+                </div>
+
+                <!-- SEO Optimization -->
+                <div class="service-card seo-card fade-in-up">
+                    <div class="service-icon">🔍</div>
+                    <h3 class="service-title">SEO Optimization</h3>
+                    <p class="service-description">I'll optimize your site to rank better on Google and bring in more organic traffic — helping the right people find you, at the right time.</p>
+                </div>
+
+                <!-- Speed & Performance Optimization -->
+                <div class="service-card performance-card fade-in-up">
+                    <div class="service-icon">📈</div>
+                    <h3 class="service-title">Speed & Performance Optimization</h3>
+                    <p class="service-description">I'll analyze your site's speed and implement best practices to improve performance — because every second counts when clients are browsing.</p>
+                </div>
+            </div>
+
+            <div class="services-cta fade-in">
+                <a href="#contact" class="btn btn-primary">Let's Build Something Together</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+        <div class="benefits-container">
+            <div class="benefits-header fade-in">
+                <h2>Why It Matters</h2>
+                <p class="benefits-subheading">Real results. Real growth. Here's what a great website can do for your business:</p>
+            </div>
+
+            <div class="benefits-grid">
+                <!-- Benefit 1 -->
+                <div class="benefit-card fade-in-up">
+                    <div class="benefit-stat" data-value="70">70%</div>
+                    <h3 class="benefit-title">Businesses With Websites Get 70% More Leads</h3>
+                    <p class="benefit-description">A survey by Blue Corona found that 70% of consumers research businesses online before ever visiting or contacting them.</p>
+                    <div class="benefit-source">
+                        <span class="source-icon">📎</span>
+                        <a href="https://www.bluecorona.com/blog/marketing-statistics-for-small-businesses/" target="_blank">Source – Blue Corona / LSA</a>
+                    </div>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="benefit-card fade-in-up">
+                    <div class="benefit-stat" data-value="200">200%</div>
+                    <h3 class="benefit-title">SEO Can Boost Your Traffic by 200%+</h3>
+                    <p class="benefit-description">Search Engine Journal reports that well-optimized sites see more than double the traffic from search engines — that's free, targeted visitors.</p>
+                    <div class="benefit-source">
+                        <span class="source-icon">📎</span>
+                        <a href="https://www.searchenginejournal.com/seo-statistics/" target="_blank">Source – Search Engine Journal</a>
+                    </div>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="benefit-card fade-in-up">
+                    <div class="benefit-stat" data-value="53">53%</div>
+                    <h3 class="benefit-title">A Slow Website Costs You Customers</h3>
+                    <p class="benefit-description">Google research shows that 53% of mobile users leave if a page takes longer than 3 seconds to load.</p>
+                    <div class="benefit-source">
+                        <span class="source-icon">📎</span>
+                        <a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank">Source – Think with Google</a>
+                    </div>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="benefit-card fade-in-up">
+                    <div class="benefit-stat" data-value="0">0.05s</div>
+                    <h3 class="benefit-title">First Impressions Are Made in 0.05 Seconds</h3>
+                    <p class="benefit-description">Users form an opinion about your website in under 50 milliseconds — make it count with a professional design.</p>
+                    <div class="benefit-source">
+                        <span class="source-icon">📎</span>
+                        <a href="https://www.tandfonline.com/doi/abs/10.1080/01449290500330448" target="_blank">Source – Behaviour & Information Technology Journal</a>
+                    </div>
+                </div>
+
+                <!-- Benefit 5 -->
+                <div class="benefit-card fade-in-up">
+                    <div class="benefit-stat" data-value="94">94%</div>
+                    <h3 class="benefit-title">94% of People Judge a Business Based on Its Website</h3>
+                    <p class="benefit-description">A Stanford study found that nearly all users base credibility judgments on how professional a site looks.</p>
+                    <div class="benefit-source">
+                        <span class="source-icon">📎</span>
+                        <a href="https://credibility.stanford.edu/" target="_blank">Source – Stanford Web Credibility Research</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Main JavaScript - loaded at the end for performance -->
     <script src="js/main.js" defer></script>
-    <!-- Load navigation script directly to ensure mobile menu works -->
-    <script src="js/nav.js" defer></script>
-    
-    <!-- Direct fix for navigation highlighting issue -->
+    <script src="js/services.js" defer></script>
+
+    <!-- Simple navigation JavaScript -->
     <script>
-        // Run immediately after DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            // Get all navigation links
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            // Force remove active class from all links
-            function clearAllActive() {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                });
-            }
-            
-            // Clear on page load
-            clearAllActive();
-            
-            // Set Home as default active link
-            const homeLink = document.querySelector('.nav-links a[href="#hero"]');
-            if (homeLink) {
-                homeLink.classList.add('active');
-            }
-            
-            // Add click handlers to each link
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+
+            // Toggle mobile menu
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+                hamburger.classList.toggle('active');
+            });
+
+            // Close mobile menu when link is clicked
             navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    // First remove all active classes
-                    clearAllActive();
-                    
-                    // Then add active class only to clicked link
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('show');
+                    hamburger.classList.remove('active');
+
+                    // Remove active class from all links
+                    navLinks.forEach(lnk => lnk.classList.remove('active'));
+
+                    // Add active class to clicked link
                     this.classList.add('active');
                 });
             });
-            
-            // Also clear on scroll with debouncing
-            let scrollTimeout;
+
+            // Highlight active section on scroll
             window.addEventListener('scroll', function() {
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(function() {
-                    // Get current URL hash
-                    const hash = window.location.hash;
-                    
-                    // If there's a hash, activate corresponding link
-                    if (hash) {
-                        clearAllActive();
-                        const activeLink = document.querySelector(`.nav-links a[href="${hash}"]`);
-                        if (activeLink) {
-                            activeLink.classList.add('active');
-                        }
-                    } else {
-                        // If no hash (at the top), highlight Home
-                        clearAllActive();
-                        if (homeLink && window.scrollY < 100) {
-                            homeLink.classList.add('active');
-                        }
+                const sections = document.querySelectorAll('section');
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+
+                    if(window.scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
                     }
-                }, 100);
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
             });
         });
     </script>
 </body>
-</html> 
+</html>
