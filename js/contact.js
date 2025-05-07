@@ -5,6 +5,8 @@
 (function() {
     // Set up form animations and validation
     setupContactForm();
+    // Set up CTA buttons to focus on contact form
+    setupContactCTAButtons();
 })();
 
 // Set up contact form validation and submission
@@ -103,6 +105,28 @@ function showFieldError(field, message) {
 
     // Focus the field
     field.focus();
+}
+
+// Set up CTA buttons to focus on the name input in contact form
+function setupContactCTAButtons() {
+    // Get all CTA buttons that link to the contact section
+    const ctaButtons = document.querySelectorAll('a[href="#contact"]');
+
+    // Get the name input field from the contact form
+    const nameInput = document.querySelector('.contact-form input[name="name"]');
+
+    if (!ctaButtons.length || !nameInput) return;
+
+    // Add click event listener to each CTA button
+    ctaButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // The default browser behavior will scroll to the contact section
+            // We just need to add a small delay to focus the name input after scrolling
+            setTimeout(() => {
+                nameInput.focus();
+            }, 500); // 500ms delay to ensure the scroll has completed
+        });
+    });
 }
 
 
