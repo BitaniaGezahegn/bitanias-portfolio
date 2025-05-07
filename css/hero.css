@@ -35,6 +35,8 @@ h1 {
     background-clip: text;
     color: transparent;
     text-shadow: 0 0 15px rgba(106, 226, 255, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
 .subheading {
@@ -71,18 +73,39 @@ h1 {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
     color: var(--text-muted);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-social-icons a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(106, 226, 255, 0.3) 0%, rgba(106, 226, 255, 0) 70%);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+    border-radius: 50%;
+    z-index: -1;
 }
 
 .hero-social-icons a:hover {
     color: var(--text-white);
     background: rgba(106, 226, 255, 0.1);
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.1);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border-color: var(--accent-cyan);
+}
+
+.hero-social-icons a:hover::before {
+    width: 150%;
+    height: 150%;
 }
 
 .scroll-hint {
@@ -96,13 +119,43 @@ h1 {
     color: var(--text-muted);
     font-size: 0.9rem;
     cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+}
+
+.scroll-hint::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-hint:hover {
+    color: var(--text-white);
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.scroll-hint:hover::after {
+    opacity: 1;
 }
 
 .scroll-hint svg {
     margin-top: 0.5rem;
+    transition: transform 0.3s ease;
 }
 
-/* Simple, low-performance bounce animation */
+.scroll-hint:hover svg {
+    transform: translateY(3px);
+}
+
+/* Animation keyframes */
 @keyframes simple-bounce {
     0%, 100% {
         transform: translateY(0);
@@ -112,8 +165,67 @@ h1 {
     }
 }
 
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(106, 226, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(106, 226, 255, 0.5);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 15px rgba(106, 226, 255, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 25px rgba(106, 226, 255, 0.6);
+    }
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation classes */
 .bounce {
     animation: simple-bounce 2s ease-in-out infinite;
+}
+
+.floating {
+    animation: floating 8s ease-in-out infinite;
+}
+
+h1 {
+    animation: glow 5s ease-in-out infinite;
+}
+
+.pulse {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.subheading {
+    opacity: 0;
+}
+
+.subheading.reveal {
+    animation: reveal 1.2s forwards ease-out;
 }
 
 /* Responsive adjustments */

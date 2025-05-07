@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Setup fade-in animations
     setupFadeInAnimations();
+
+    // Create particles for hero section
+    createParticles();
 });
 
 // Set up scroll indicator to navigate to the About section
@@ -85,27 +88,37 @@ function loadScript(src) {
 
 // Set up basic interactions without heavy animations
 function setupBasicInteractions() {
-    // Simple typing effect for hero headline
-    const textElement = document.querySelector('.animate-text');
-    if (textElement) {
-        const originalText = textElement.textContent;
-        textElement.textContent = '';
+    // Add subtle hero animations
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) {
+        // Add floating animation class
+        heroContent.classList.add('floating');
 
-        // Simple typing animation that doesn't block rendering
-        setTimeout(function() {
-            let i = 0;
-            function typeWriter() {
-                if (i < originalText.length) {
-                    textElement.textContent += originalText.charAt(i);
-                    i++;
-                    // Use requestAnimationFrame for better performance
-                    if (i < originalText.length) {
-                        setTimeout(typeWriter, 30);
-                    }
-                }
+        // Add reveal animation to subheading with slight delay
+        const subheading = heroContent.querySelector('.subheading');
+        if (subheading) {
+            setTimeout(() => {
+                subheading.classList.add('reveal');
+            }, 300);
+        }
+
+        // Add subtle pulse to CTA buttons
+        const ctaButtons = heroContent.querySelectorAll('.btn');
+        ctaButtons.forEach(button => {
+            button.classList.add('pulse');
+        });
+    }
+
+    // Add parallax effect to hero section
+    const heroSection = document.getElementById('hero');
+    if (heroSection) {
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            if (scrollPosition < window.innerHeight) {
+                const translateY = scrollPosition * 0.2;
+                heroSection.style.transform = `translateY(${translateY}px)`;
             }
-            typeWriter();
-        }, 500);
+        });
     }
 }
 
@@ -159,4 +172,49 @@ function setupFadeInAnimations() {
     document.querySelectorAll('.fade-in-up').forEach(el => {
         fadeUpObserver.observe(el);
     });
+}
+
+// Create floating particles in the hero section
+function createParticles() {
+    const container = document.getElementById('particles-container');
+    if (!container) return;
+
+    // Clear any existing particles
+    container.innerHTML = '';
+
+    // Create a limited number of particles for performance
+    const particleCount = 15;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    for (let i = 0; i < particleCount; i++) {
+        // Create particle with random properties
+        const particle = document.createElement('div');
+
+        // Alternate between particle types
+        const particleType = i % 3 + 1;
+        particle.className = `particle particle-${particleType}`;
+
+        // Random starting position
+        const startX = Math.random() * viewportWidth;
+        const startY = Math.random() * viewportHeight;
+
+        // Random ending position (for animation)
+        const endX = (Math.random() - 0.5) * 200;
+        const endY = (Math.random() - 0.5) * 200;
+
+        // Set CSS variables for the animation
+        particle.style.setProperty('--x', `${endX}px`);
+        particle.style.setProperty('--y', `${endY}px`);
+
+        // Set initial position
+        particle.style.left = `${startX}px`;
+        particle.style.top = `${startY}px`;
+
+        // Add random delay to animation
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+
+        // Add to container
+        container.appendChild(particle);
+    }
 }
