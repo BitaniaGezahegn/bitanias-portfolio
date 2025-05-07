@@ -155,7 +155,7 @@ h1 {
     transform: translateY(3px);
 }
 
-/* Animation keyframes */
+/* Animation keyframes - optimized for performance */
 @keyframes simple-bounce {
     0%, 100% {
         transform: translateY(0);
@@ -203,29 +203,49 @@ h1 {
     }
 }
 
-/* Animation classes */
+/* Animation classes - with will-change for hardware acceleration */
 .bounce {
     animation: simple-bounce 2s ease-in-out infinite;
+    will-change: transform;
 }
 
 .floating {
     animation: floating 8s ease-in-out infinite;
+    will-change: transform;
 }
 
 h1 {
     animation: glow 5s ease-in-out infinite;
+    will-change: text-shadow;
 }
 
 .pulse {
     animation: pulse 3s ease-in-out infinite;
+    will-change: box-shadow;
 }
 
 .subheading {
     opacity: 0;
+    will-change: opacity, transform;
 }
 
 .subheading.reveal {
     animation: reveal 1.2s forwards ease-out;
+}
+
+/* Low-end device optimizations */
+.low-end-device .bounce,
+.low-end-device .floating,
+.low-end-device h1,
+.low-end-device .pulse {
+    animation: none;
+    will-change: auto;
+}
+
+.low-end-device .subheading {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
 }
 
 /* Responsive adjustments */

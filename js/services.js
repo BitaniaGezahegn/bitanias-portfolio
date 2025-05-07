@@ -13,18 +13,31 @@ function setupServiceCardAnimations() {
     if (window.serviceCardsInitialized) return;
     window.serviceCardsInitialized = true;
 
-    // Add hover effects to service cards
-    document.querySelectorAll('.service-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            // Add subtle glow effect
-            this.style.boxShadow = `0 15px 40px rgba(0, 0, 0, 0.3),
-                                   0 0 30px ${getCardGlowColor(this)}`;
-        });
+    // Skip hover effects on low-end devices
+    if (window.performanceSettings && window.performanceSettings.isLowEndDevice) {
+        return;
+    }
 
-        card.addEventListener('mouseleave', function() {
+    // Add hover effects to service cards - use event delegation for better performance
+    const servicesContainer = document.querySelector('.services-grid');
+    if (!servicesContainer) return;
+
+    // Use a single event listener instead of one per card
+    servicesContainer.addEventListener('mouseover', function(e) {
+        const card = e.target.closest('.service-card');
+        if (card) {
+            // Add subtle glow effect
+            card.style.boxShadow = `0 15px 40px rgba(0, 0, 0, 0.3),
+                                   0 0 30px ${getCardGlowColor(card)}`;
+        }
+    });
+
+    servicesContainer.addEventListener('mouseout', function(e) {
+        const card = e.target.closest('.service-card');
+        if (card) {
             // Reset to original state (CSS will handle this)
-            this.style.boxShadow = '';
-        });
+            card.style.boxShadow = '';
+        }
     });
 }
 

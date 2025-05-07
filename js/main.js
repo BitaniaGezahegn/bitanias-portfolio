@@ -88,44 +88,80 @@ function loadScript(src) {
 
 // Set up basic interactions without heavy animations
 function setupBasicInteractions() {
-    // Add subtle hero animations
+    // Check if we're on a low-end device
+    const isLowEnd = window.performanceSettings && window.performanceSettings.isLowEndDevice;
+
+    // Add subtle hero animations (only if not a low-end device)
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
-        // Add floating animation class
-        heroContent.classList.add('floating');
+        if (!isLowEnd) {
+            // Add floating animation class
+            heroContent.classList.add('floating');
 
-        // Add reveal animation to subheading with slight delay
-        const subheading = heroContent.querySelector('.subheading');
-        if (subheading) {
-            setTimeout(() => {
-                subheading.classList.add('reveal');
-            }, 300);
+            // Add subtle pulse to CTA buttons
+            const ctaButtons = heroContent.querySelectorAll('.btn');
+            ctaButtons.forEach(button => {
+                button.classList.add('pulse');
+            });
         }
 
-        // Add subtle pulse to CTA buttons
-        const ctaButtons = heroContent.querySelectorAll('.btn');
-        ctaButtons.forEach(button => {
-            button.classList.add('pulse');
-        });
+        // Always show the subheading, but use animation only on capable devices
+        const subheading = heroContent.querySelector('.subheading');
+        if (subheading) {
+            if (isLowEnd) {
+                // Immediately show without animation
+                subheading.style.opacity = '1';
+            } else {
+                // Use animation with slight delay
+                setTimeout(() => {
+                    subheading.classList.add('reveal');
+                }, 300);
+            }
+        }
     }
 
-    // Add parallax effect to hero section
-    const heroSection = document.getElementById('hero');
-    if (heroSection) {
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY;
-            if (scrollPosition < window.innerHeight) {
-                const translateY = scrollPosition * 0.2;
-                heroSection.style.transform = `translateY(${translateY}px)`;
-            }
-        });
+    // Add parallax effect to hero section (only if not a low-end device)
+    if (!isLowEnd) {
+        const heroSection = document.getElementById('hero');
+        if (heroSection) {
+            // Use passive event listener for better scroll performance
+            window.addEventListener('scroll', function() {
+                // Use requestAnimationFrame to optimize the scroll handler
+                requestAnimationFrame(() => {
+                    const scrollPosition = window.scrollY;
+                    if (scrollPosition < window.innerHeight) {
+                        const translateY = scrollPosition * 0.2;
+                        heroSection.style.transform = `translateY(${translateY}px)`;
+                    }
+                });
+            }, { passive: true });
+        }
     }
 }
 
 // Set up fade-in animations that trigger when elements are in view
 function setupFadeInAnimations() {
+    // Check if we're on a low-end device
+    const isLowEnd = window.performanceSettings && window.performanceSettings.isLowEndDevice;
+
+    // For low-end devices, just make all elements visible immediately
+    if (isLowEnd) {
+        document.querySelectorAll('.fade-in, .fade-in-up').forEach(el => {
+            el.classList.add('visible');
+            // Remove transitions for better performance
+            el.style.transition = 'none';
+        });
+        return;
+    }
+
     // Only set up if IntersectionObserver is supported
-    if (!('IntersectionObserver' in window)) return;
+    if (!('IntersectionObserver' in window)) {
+        // Fallback for browsers without IntersectionObserver
+        document.querySelectorAll('.fade-in, .fade-in-up').forEach(el => {
+            el.classList.add('visible');
+        });
+        return;
+    }
 
     const animateOnScroll = (entries, observer) => {
         entries.forEach(entry => {
@@ -152,13 +188,17 @@ function setupFadeInAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 // Add a slight delay between each card animation
+                // Limit the number of delayed animations for better performance
                 const index = Array.from(
                     document.querySelectorAll('.fade-in-up')
                 ).indexOf(entry.target);
 
+                // Use a shorter delay and cap the maximum delay
+                const delay = Math.min(index * 100, 500);
+
                 setTimeout(() => {
                     entry.target.classList.add('visible');
-                }, index * 150); // 150ms delay between each card
+                }, delay);
 
                 observer.unobserve(entry.target);
             }
@@ -176,6 +216,11 @@ function setupFadeInAnimations() {
 
 // Create floating particles in the hero section
 function createParticles() {
+    // Skip particle creation for low-end devices
+    if (window.performanceSettings && window.performanceSettings.isLowEndDevice) {
+        return;
+    }
+
     const container = document.getElementById('particles-container');
     if (!container) return;
 
@@ -183,7 +228,8 @@ function createParticles() {
     container.innerHTML = '';
 
     // Create a limited number of particles for performance
-    const particleCount = 15;
+    // Reduce count for better performance
+    const particleCount = 8;
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 

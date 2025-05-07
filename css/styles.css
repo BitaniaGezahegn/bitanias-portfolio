@@ -54,6 +54,24 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .gradient-bg {
+        animation: none;
+        background-position: 0% 0%;
+    }
+
+    .floating, .pulse, .bounce, .glow {
+        animation: none !important;
+    }
+
+    .fade-in, .fade-in-up {
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
 /* Section styles */
 .section {
     padding: 8% 8%;

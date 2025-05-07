@@ -7,6 +7,8 @@
     height: 100%;
     overflow: hidden;
     z-index: 1;
+    /* Hide particles on low-end devices */
+    will-change: opacity;
 }
 
 .particle {
@@ -14,6 +16,8 @@
     border-radius: 50%;
     opacity: 0;
     pointer-events: none;
+    /* Use hardware acceleration for particles */
+    will-change: transform, opacity;
 }
 
 .particle-1 {
@@ -58,4 +62,16 @@
         opacity: 0;
         transform: translate(var(--x), var(--y));
     }
+}
+
+/* Hide particles for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .particles-container {
+        display: none;
+    }
+}
+
+/* Hide particles for low-end devices */
+.low-end-device .particles-container {
+    display: none;
 }
