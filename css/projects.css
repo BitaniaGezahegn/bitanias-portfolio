@@ -5,7 +5,7 @@
     align-items: center;
     position: relative;
     padding: 6% 8%;
-    background-image: 
+    background-image:
         radial-gradient(circle at 75% 25%, rgba(164, 133, 255, 0.03) 0%, transparent 30%),
         radial-gradient(circle at 25% 75%, rgba(106, 226, 255, 0.03) 0%, transparent 30%);
 }
@@ -67,7 +67,7 @@
     position: relative;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 
+    box-shadow:
         0 10px 30px rgba(0, 0, 0, 0.2),
         inset 0 1px 1px rgba(255, 255, 255, 0.05);
     height: 100%;
@@ -78,8 +78,8 @@
 .project-card:hover {
     transform: translateY(-8px);
     background: rgba(20, 20, 30, 0.35);
-    box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.3), 
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.3),
         0 0 20px rgba(106, 226, 255, 0.2),
         inset 0 1px 2px rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.15);
@@ -208,28 +208,18 @@
     font-size: 1rem;
 }
 
-/* Fade-in animation for project cards */
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-in-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+/* Project card animations are now in styles.css */
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .projects-header h2 {
         font-size: 2.5rem;
     }
-    
+
     .projects-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .project-image-container {
         height: 200px;
     }

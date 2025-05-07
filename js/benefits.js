@@ -6,11 +6,6 @@
     // Set up benefit card animations
     setupBenefitCardAnimations();
 
-    // Add entrance animations if IntersectionObserver is supported
-    if ('IntersectionObserver' in window) {
-        setupFadeInAnimations();
-    }
-
     // Set up stat counter animations
     setupStatCounters();
 })();
@@ -46,36 +41,7 @@ function setupBenefitCardAnimations() {
     });
 }
 
-// Set up fade-in animations that trigger when elements are in view
-function setupFadeInAnimations() {
-    const animateOnScroll = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Add a slight delay between each card animation
-                const index = Array.from(
-                    document.querySelectorAll('.fade-in-up')
-                ).indexOf(entry.target);
 
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, index * 150); // 150ms delay between each card
-
-                observer.unobserve(entry.target);
-            }
-        });
-    };
-
-    // Create observer
-    const observer = new IntersectionObserver(animateOnScroll, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-
-    // Observe elements with fade-in-up class
-    document.querySelectorAll('.fade-in-up').forEach(el => {
-        observer.observe(el);
-    });
-}
 
 // Set up stat counter animations
 function setupStatCounters() {

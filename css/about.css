@@ -182,6 +182,26 @@ blockquote::after {
     border: 3px solid rgba(106, 226, 255, 0.4);
 }
 
+.profile-circle img {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-container h3 {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.profile-container p {
+    font-size: 1.2rem;
+    color: var(--accent-cyan);
+    margin-bottom: 0;
+}
+
 /* Responsive adjustments */
 @media (min-width: 768px) {
     .about-content {
@@ -207,4 +227,4 @@ blockquote::after {
         text-align: center;
         gap: 1.5rem;
     }
-} 
+}

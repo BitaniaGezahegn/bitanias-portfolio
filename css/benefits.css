@@ -303,17 +303,7 @@
     border-color: rgba(164, 133, 255, 0.5);
 }
 
-/* Fade-in animation for benefit cards */
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-in-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+/* Benefit card animations are now in styles.css */
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

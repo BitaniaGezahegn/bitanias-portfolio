@@ -1,18 +1,21 @@
-// Main JavaScript file with performance optimization 
+// Main JavaScript file with performance optimization
 
 // Initialize on document load
 document.addEventListener('DOMContentLoaded', function() {
     // Navigation is now directly loaded in HTML
     // No need to load it dynamically
-    
+
     // Setup scroll indicator functionality
     setupScrollIndicator();
-    
+
     // Lazy load animations only when needed
     lazyLoadResources();
-    
+
     // Handle basic interactions
     setupBasicInteractions();
+
+    // Setup fade-in animations
+    setupFadeInAnimations();
 });
 
 // Set up scroll indicator to navigate to the About section
@@ -21,13 +24,13 @@ function setupScrollIndicator() {
     if (scrollIndicator) {
         scrollIndicator.addEventListener('click', function(e) {
             e.preventDefault();
-            
+
             const aboutSection = document.getElementById('about');
             if (aboutSection) {
                 // Calculate offset to account for fixed navbar
                 const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
                 const targetPosition = aboutSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                
+
                 // Perform the smooth scroll
                 window.scrollTo({
                     top: targetPosition,
@@ -35,7 +38,7 @@ function setupScrollIndicator() {
                 });
             }
         });
-        
+
         // Add bounce class instead of using GSAP
         const scrollSvg = scrollIndicator.querySelector('svg');
         if (scrollSvg) {
@@ -54,13 +57,13 @@ function lazyLoadResources() {
                 if (entry.target.id === 'about') {
                     loadScript('js/about.js');
                 }
-                
+
                 // Unobserve after loading
                 observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
-    
+
     // Observe sections
     const sections = document.querySelectorAll('section');
     sections.forEach(section => {
@@ -87,7 +90,7 @@ function setupBasicInteractions() {
     if (textElement) {
         const originalText = textElement.textContent;
         textElement.textContent = '';
-        
+
         // Simple typing animation that doesn't block rendering
         setTimeout(function() {
             let i = 0;
@@ -104,4 +107,56 @@ function setupBasicInteractions() {
             typeWriter();
         }, 500);
     }
-} 
+}
+
+// Set up fade-in animations that trigger when elements are in view
+function setupFadeInAnimations() {
+    // Only set up if IntersectionObserver is supported
+    if (!('IntersectionObserver' in window)) return;
+
+    const animateOnScroll = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    // Create observer for fade-in elements
+    const fadeObserver = new IntersectionObserver(animateOnScroll, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe elements with fade-in class
+    document.querySelectorAll('.fade-in').forEach(el => {
+        fadeObserver.observe(el);
+    });
+
+    // Create observer for fade-in-up elements with staggered delay
+    const fadeUpObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add a slight delay between each card animation
+                const index = Array.from(
+                    document.querySelectorAll('.fade-in-up')
+                ).indexOf(entry.target);
+
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 150); // 150ms delay between each card
+
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe elements with fade-in-up class
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+        fadeUpObserver.observe(el);
+    });
+}
