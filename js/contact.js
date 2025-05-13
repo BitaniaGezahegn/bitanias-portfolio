@@ -3,16 +3,28 @@
 
 // Initialize interactions for the Contact section
 (function() {
+    // Initialize EmailJS
+    initEmailJS();
+
     // Set up form animations and validation
     setupContactForm();
+
     // Set up CTA buttons to focus on contact form
     setupContactCTAButtons();
 })();
 
+// Initialize EmailJS with your user ID
+function initEmailJS() {
+    // Initialize EmailJS with your user ID
+    // You need to sign up at https://www.emailjs.com/ and get your user ID
+    emailjs.init("T1Oy1fbJAp57Xppx5");
+}
+
 // Set up contact form validation and submission
 function setupContactForm() {
-    const contactForm = document.querySelector('.contact-form');
+    const contactForm = document.getElementById('contact-form');
     const successMessage = document.querySelector('.form-success-message');
+    const submitButton = document.getElementById('submit-btn');
 
     if (!contactForm) return;
 
@@ -20,9 +32,10 @@ function setupContactForm() {
         e.preventDefault();
 
         // Get form fields
-        const nameField = contactForm.querySelector('input[name="name"]');
-        const emailField = contactForm.querySelector('input[name="email"]');
-        const messageField = contactForm.querySelector('textarea[name="message"]');
+        const nameField = document.getElementById('user_name');
+        const emailField = document.getElementById('user_email');
+        const subjectField = document.getElementById('subject');
+        const messageField = document.getElementById('message');
 
         // Simple validation
         if (!nameField.value.trim()) {
@@ -35,29 +48,60 @@ function setupContactForm() {
             return;
         }
 
+        if (!subjectField.value.trim()) {
+            showFieldError(subjectField, 'Please enter a subject');
+            return;
+        }
+
         if (!messageField.value.trim()) {
             showFieldError(messageField, 'Please enter your message');
             return;
         }
 
-        // Simulate form submission (in a real scenario, you'd send data to the server)
-        const submitButton = contactForm.querySelector('button[type="submit"]');
+        // Show loading state
         submitButton.disabled = true;
         submitButton.innerHTML = 'Sending...';
+        showFormStatus('loading', 'Sending your message...');
 
-        // Simulate server delay
-        setTimeout(() => {
-            // Hide the form and show success message
-            contactForm.style.display = 'none';
-            if (successMessage) {
-                successMessage.classList.add('visible');
-            }
+        // Prepare template parameters
+        const templateParams = {
+            user_name: nameField.value.trim(),
+            user_email: emailField.value.trim(),
+            subject: subjectField.value.trim(),
+            message: messageField.value.trim()
+        };
 
-            // Reset form for future submissions
-            contactForm.reset();
-            submitButton.disabled = false;
-            submitButton.innerHTML = 'Send Message';
-        }, 1500);
+        // Send email using EmailJS
+        // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual EmailJS service and template IDs
+        emailjs.send('service_fsifcco', 'template_kxh223h', templateParams)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+
+                // Show success message
+                showFormStatus('success', 'Your message has been sent successfully!');
+
+                // Hide the form and show success message after a delay
+                setTimeout(() => {
+                    contactForm.style.display = 'none';
+                    if (successMessage) {
+                        successMessage.classList.add('visible');
+                    }
+                }, 1500);
+
+                // Reset form
+                contactForm.reset();
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Send Message';
+            }, function(error) {
+                console.log('FAILED...', error);
+
+                // Show error message
+                showFormStatus('error', 'Failed to send message. Please try again later or contact me directly via email.');
+
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Send Message';
+            });
     });
 
     // Add focus effects to form fields
@@ -77,7 +121,34 @@ function setupContactForm() {
                 errorMessage.remove();
             }
         });
+
+        // Also clear form status when user starts typing
+        field.addEventListener('input', function() {
+            clearFormStatus();
+        });
     });
+}
+
+// Helper function to show form status messages
+function showFormStatus(type, message) {
+    const formStatus = document.getElementById('form-status');
+    if (!formStatus) return;
+
+    // Clear any existing status
+    formStatus.className = 'form-status';
+
+    // Add the appropriate class and message
+    formStatus.classList.add(type);
+    formStatus.textContent = message;
+}
+
+// Helper function to clear form status
+function clearFormStatus() {
+    const formStatus = document.getElementById('form-status');
+    if (!formStatus) return;
+
+    formStatus.className = 'form-status';
+    formStatus.textContent = '';
 }
 
 // Helper function to validate email format
@@ -113,13 +184,13 @@ function setupContactCTAButtons() {
     const ctaButtons = document.querySelectorAll('a[href="#contact"]');
 
     // Get the name input field from the contact form
-    const nameInput = document.querySelector('.contact-form input[name="name"]');
+    const nameInput = document.getElementById('user_name');
 
     if (!ctaButtons.length || !nameInput) return;
 
     // Add click event listener to each CTA button
     ctaButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
+        button.addEventListener('click', function() {
             // The default browser behavior will scroll to the contact section
             // We just need to add a small delay to focus the name input after scrolling
             setTimeout(() => {
