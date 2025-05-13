@@ -161,8 +161,69 @@
     color: var(--text-muted);
     line-height: 1.6;
     font-size: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+/* Disable transitions for low-end devices */
+.low-end-device .project-description {
+    transition: none;
+}
+
+/* Initial collapsed state - limit to approximately 3 lines */
+.project-description.collapsed {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-height: 4.8rem; /* 3 lines × 1.6 line-height */
+    text-overflow: ellipsis;
+}
+
+/* Expanded state */
+.project-description.expanded {
+    max-height: 300px; /* Large enough to fit any description */
+}
+
+/* Clickable description styling */
+.project-description.clickable {
+    cursor: pointer;
+    position: relative;
+}
+
+.project-description.clickable:hover {
+    color: var(--text-white);
+}
+
+/* Read more button */
+.read-more-btn {
+    color: var(--accent-cyan);
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.read-more-btn:hover {
+    color: var(--accent-purple);
+}
+
+.read-more-btn svg {
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.read-more-btn.expanded svg {
+    transform: rotate(180deg);
 }
 
 .project-links {

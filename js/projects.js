@@ -5,6 +5,9 @@
 (function() {
     // Set up project card animations
     setupProjectCardAnimations();
+
+    // Set up accordion functionality for project descriptions
+    setupProjectAccordions();
 })();
 
 // Set up project card animations and interactions
@@ -60,6 +63,82 @@ function setupProjectCardAnimations() {
 }
 
 
+
+// Set up accordion functionality for project descriptions
+function setupProjectAccordions() {
+    // Only set up once
+    if (window.projectAccordionsInitialized) return;
+    window.projectAccordionsInitialized = true;
+
+    // Check if we're on a low-end device
+    const isLowEnd = window.performanceSettings && window.performanceSettings.isLowEndDevice;
+
+    const projectDescriptions = document.querySelectorAll('.project-description');
+
+    // Process each project description
+    projectDescriptions.forEach(description => {
+        // Add collapsed class initially
+        description.classList.add('collapsed');
+
+        // Create read more button with chevron icon
+        const readMoreBtn = document.createElement('button');
+        readMoreBtn.className = 'read-more-btn';
+
+        // Simpler SVG for low-end devices
+        const chevronSvg = isLowEnd
+            ? '▼' // Simple down arrow for low-end devices
+            : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+
+        readMoreBtn.innerHTML = `Read more ${chevronSvg}`;
+
+        // Insert button after description
+        description.parentNode.insertBefore(readMoreBtn, description.nextSibling);
+
+        // Function to toggle accordion state
+        const toggleAccordion = function(e) {
+            // Prevent default behavior if it's a link click
+            if (e && e.target && (e.target.tagName === 'A' || e.target.closest('a'))) {
+                return; // Don't toggle if a link was clicked
+            }
+
+            const isExpanded = description.classList.contains('expanded');
+
+            // Toggle expanded/collapsed state
+            if (isExpanded) {
+                description.classList.remove('expanded');
+                description.classList.add('collapsed');
+
+                // Update button text and icon
+                if (isLowEnd) {
+                    readMoreBtn.innerHTML = 'Read more ▼';
+                } else {
+                    readMoreBtn.innerHTML = 'Read more <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+                }
+                readMoreBtn.classList.remove('expanded');
+            } else {
+                description.classList.remove('collapsed');
+                description.classList.add('expanded');
+
+                // Update button text and icon
+                if (isLowEnd) {
+                    readMoreBtn.innerHTML = 'Read less ▲';
+                } else {
+                    readMoreBtn.innerHTML = 'Read less <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>';
+                }
+                readMoreBtn.classList.add('expanded');
+            }
+        };
+
+        // Add click event listener to the read more button
+        readMoreBtn.addEventListener('click', toggleAccordion);
+
+        // Also make the description itself clickable to toggle
+        description.addEventListener('click', toggleAccordion);
+
+        // Add a class to indicate the description is clickable
+        description.classList.add('clickable');
+    });
+}
 
 // Create placeholder images for projects if needed
 function createPlaceholderImage(index) {
