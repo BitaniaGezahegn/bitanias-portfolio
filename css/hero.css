@@ -6,6 +6,7 @@
     padding: 0 8%;
     position: relative;
     z-index: 5;
+    background-color: rgb(11, 7, 13);
 }
 
 .hero-content {
@@ -22,6 +23,52 @@
     color: var(--text-muted);
     margin-bottom: 2rem;
     opacity: 0.8;
+}
+.available-now {
+    display: flex; 
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.available-badge {
+    width: 12px;
+    height: 12px;
+    background-color: #14A800;
+    border-radius: 50%;
+    display: block;
+    animation: availability-flash 2s ease-in-out infinite;
+}
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s ease, visibility .3s ease;
+    position: absolute;
+    z-index: 10;
+    top: 135%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    padding: .5rem .75rem;
+    border-radius: .375rem;
+    box-shadow: 0 4px 6px -1px rgba(57, 25, 73, 0.1), 0 2px 4px -1px rgba(142, 88, 172, 0.4);
+    font-size: 0.875rem;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    gap: 8px;
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    background-color: rgb(33, 21, 39);
 }
 
 h1 {
@@ -62,9 +109,10 @@ h1 {
     margin-bottom: 4rem;
     position: relative;
     z-index: 10;
+    align-items: center;
 }
 
-.hero-social-icons a {
+.hero-social-icons .social-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +129,7 @@ h1 {
     overflow: hidden;
 }
 
-.hero-social-icons a::before {
+.hero-social-icons .social-icon::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -95,7 +143,7 @@ h1 {
     z-index: -1;
 }
 
-.hero-social-icons a:hover {
+.hero-social-icons .social-icon:hover {
     color: var(--text-white);
     background: rgba(106, 226, 255, 0.1);
     transform: translateY(-3px) scale(1.1);
@@ -103,9 +151,13 @@ h1 {
     border-color: var(--accent-cyan);
 }
 
-.hero-social-icons a:hover::before {
+.hero-social-icons .social-icon:hover::before {
     width: 150%;
     height: 150%;
+}
+
+.hero-social-icons .social-icon-no-stroke {
+    width: 64px !important;
 }
 
 .scroll-hint {
@@ -200,6 +252,18 @@ h1 {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes availability-flash {
+    0% {
+        background-color: rgb(20, 168, 0);
+    }
+    50%{
+        background-color: rgb(29, 191, 115);
+    }
+    100%{
+        background-color: #14A800;
     }
 }
 
