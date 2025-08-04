@@ -1,0 +1,207 @@
+/* Clean navigation CSS without mobile menu elements */
+.navbar {
+    position: fixed;
+    top: 8px;
+    right: 5%;
+    left: auto;
+    width: 40%;
+    background: rgba(10, 10, 15, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 100;
+    padding: 0.2rem 0.8rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transform: translateY(0);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08), 0 0 4px rgba(106, 226, 255, 0.2);
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+    height: 1.8rem;
+    margin-top: 0;
+    border: none; /* Remove all borders */
+}
+
+/* Add left border accent */
+.navbar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(106, 226, 255, 0.4), rgba(106, 226, 255, 0.05));
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Add an accent line at the bottom of the navbar */
+.navbar::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        rgba(106, 226, 255, 0.5) 0%, 
+        rgba(171, 71, 188, 0.5) 50%,
+        rgba(106, 226, 255, 0.2) 100%);
+    opacity: 0.8;
+}
+
+.navbar.hidden {
+    transform: translateY(-100%);
+}
+
+.nav-logo {
+    display: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-right: 10px; /* Move nav items 10px to the left */
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.4px;
+    padding: 0.3rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 8px rgba(106, 226, 255, 0.3);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    transition: width 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0.7;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+    box-shadow: 0 0 5px rgba(106, 226, 255, 0.5);
+}
+
+/* Style for active navigation link */
+.nav-links a.active::after {
+    width: 100%;
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(106, 226, 255, 0.6);
+}
+
+/* Add a scroll progress indicator at the bottom of the navbar */
+.scroll-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    width: 0%;
+    transition: width 0.1s ease-out;
+    opacity: 0.8;
+    z-index: 102;
+}
+
+/* Navigation CTA button styling */
+.nav-cta {
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    color: white !important;
+    padding: 0.3rem 0.8rem !important;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(106, 226, 255, 0.3);
+}
+
+.nav-cta:hover {
+    box-shadow: 0 0 15px rgba(106, 226, 255, 0.5);
+    transform: translateY(-1px);
+}
+
+/* Remove underline for CTA button */
+.nav-cta::after {
+    display: none !important;
+}
+
+/* Nav CTA container spacing */
+.cta-nav-item {
+    margin-left: 1rem;
+}
+
+/* Mobile responsive styling */
+@media (max-width: 768px) {
+    /* Taller navbar to accommodate two rows */
+    .navbar {
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0.5rem 1rem !important;
+        clip-path: none !important;
+        border-radius: 0 !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        height: auto !important; /* Allow height to adjust to content */
+        min-height: 2.5rem;
+    }
+    
+    /* Properly organize nav links in mobile view */
+    .nav-links {
+        width: 100%;
+        display: grid; /* Use grid layout instead of flex */
+        grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    
+    /* Style each navigation item */
+    .nav-links li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Navigation links styling */
+    .nav-links a {
+        font-size: 0.7rem;
+        padding: 0.3rem 0;
+        width: 100%;
+        display: block;
+    }
+    
+    /* Position the CTA at the end of the grid */
+    .cta-nav-item {
+        margin-left: 0;
+        grid-column: span 3; /* Make it take the full width on its own row */
+        margin-top: 0.3rem;
+    }
+    
+    /* Mobile CTA styling */
+    .nav-cta {
+        padding: 0.4rem 0.6rem !important;
+        font-size: 0.75rem;
+        display: inline-block !important;
+        width: auto !important;
+        margin: 0 auto;
+    }
+} 

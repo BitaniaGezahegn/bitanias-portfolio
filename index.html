@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitania's Digital Experience Hub</title>
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Inter:wght@400&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Inter:wght@400&display=swap">
+
+    <!-- Critical CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/particles.css">
+
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="preload" href="css/about.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/about.css"></noscript>
+    <link rel="preload" href="css/services.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/services.css"></noscript>
+    <link rel="preload" href="css/benefits.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/benefits.css"></noscript>
+    <link rel="preload" href="css/projects.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/projects.css"></noscript>
+    <link rel="preload" href="css/contact.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/contact.css"></noscript>
+    <link rel="preload" href="css/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/footer.css"></noscript>
+    <link rel="preload" href="css/navigation.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/navigation.css"></noscript>
+</head>
+<body>
+    <!-- Simple Navigation Bar -->
+    <nav class="simple-nav">
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Background container with gradient -->
+    <div id="bg-effect">
+        <div class="gradient-bg"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="particles-container" id="particles-container">
+            <!-- Particles will be added by JavaScript -->
+        </div>
+        <div class="hero-content">
+            <p class="signature tooltip-container">
+                <span class="available-now">
+                    <span class="available-badge"></span>Crafted with care by Bitania Gezahegn
+                </span>
+                <span class="tooltip-text">Now Available on 
+                    <a href="https://upwork.com/freelancers/bitaniag" target="_blank">
+                        <img src="assets/upwork.svg" width="64px" alt="Upwork" style="background-color: transparent;">
+                    </a>
+                </span>
+            </p>
+            <h1>Meaningful Websites, Real Growth.</h1>
+            <p class="subheading">Expect a clear, fast and effective website that showcases your unique message to your audience for real business growth.</p>
+
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Let's Work Together</a>
+                <a href="#projects" class="btn btn-secondary">View My Work</a>
+            </div>
+
+            <div class="hero-social-icons">
+                <a href="https://www.instagram.com/bita_nia12" target="_blank" aria-label="Instagram" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/bitania-gezahegn-62bb17249" target="_blank" aria-label="LinkedIn" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="https://t.me/Elchapo_ET" target="_blank" aria-label="Telegram" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4L3 11L10 14L13 21L20 4z"></path></svg>
+                </a>
+                <a href="https://upwork.com/freelancers/bitaniag" target="_blank" aria-label="Upwork" class="social-icon-no-stroke">
+                    <img src="assets/upwork.svg" width="64px" alt="Upwork" style="background-color: transparent;">
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-hint" id="scroll-indicator">
+            <span>Scroll to Learn More</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="section">
+        <div class="section-content">
+            <div class="section-header fade-in">
+                <h2>About Me</h2>
+                <p class="section-subheading">Who's behind the code?</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <!-- Profile with avatar -->
+                    <div class="profile-container fade-in">
+                        <div class="profile-circle">
+                            <img src="assets/images/Profile_Square.JPG" alt="Bitania Gezahegn" loading="lazy" width="150" height="150">
+                        </div>
+
+                        <div>
+                            <h3>Bitania Gezahegn</h3>
+                            <p>Web Developer & Designer</p>
+                        </div>
+                    </div>
+
+                    <p class="fade-in">For me, web development isn't just about lines of code; it's about solving your challenges and building a strong online home for your business.</p>
+                    <p class="fade-in">I focus on creating clean, responsive websites that don't just look good, but are engineered to perform. My approach ensures your unique message reaches your audience clearly, turning visitors into loyal clients.</p>
+                    <p class="fade-in">Whether you're a personal brand or a thriving local shop, I'm committed to delivering digital solutions that work hard for you and drive genuine business growth.</p>
+                    <p class="fade-in">I'm constantly learning and refining my skills in Web Development & Database Administration to ensure your online presence is always at its best.</p>
+
+                    <div class="cta-buttons">
+                        <a href="https://upwork.com/freelancers/bitaniag" class="btn btn-primary">Contact me on Upwork</a>
+                        <a href="assets/BITANIA GEZAHRGN PROFESSIONAL CV.pdf" class="btn btn-secondary">Download my CV</a>
+                    </div>
+                </div>
+
+                <div class="skills-container fade-in">
+                    <h3>Skills & Tools</h3>
+                    <div class="skill-categories">
+                        <div class="skill-category tools">
+                            <h4>Tools & Platforms</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">WordPress</span>
+                                <span class="skill-tag">Elementor</span>
+                                <span class="skill-tag">VS Code</span>
+                                <span class="skill-tag">AI</span>
+                                <span class="skill-tag">Git/GitHub</span>
+                                <span class="skill-tag">Figma</span>
+                            </div>
+                        </div>
+                        <div class="skill-category frontend">
+                            <h4>Frontend</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">HTML5</span>
+                                <span class="skill-tag">CSS3/SASS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">Responsive Design</span>
+                                <span class="skill-tag">React/Next.js</span>
+                                <span class="skill-tag">Animations</span>
+                                <span class="skill-tag">UI/UX</span>
+                            </div>
+                        </div>
+                        <div class="skill-category backend">
+                            <h4>Backend</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">PHP</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">REST APIs</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="quote-container fade-in">
+                    <blockquote>
+                        I build online <strong>homes</strong> where your business thrives, because <strong> genuine connection</strong> leads to lasting success.
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="services-container">
+            <div class="services-header fade-in">
+                <h2>What I Can Do For You</h2>
+                <p class="services-subheading">Services built to grow your brand, save you time, and impress your clients.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- WordPress Setup & Customization -->
+                <div class="service-card wordpress-card fade-in-up">
+                    <div class="gradient-overlay"></div>
+                    <div class="service-icon">🛒</div>
+                    <h3 class="service-title">Custom WordPress Solutions</h3>
+                    <p class="service-description">Need a WordPress site? I can install, configure, and <b>customize</b> your theme to match your brand — from landing pages to e-commerce websites.</p>
+                </div>
+
+                <!-- Website Hosting & Setup -->
+                <div class="service-card hosting-card fade-in-up">
+                    <div class="gradient-overlay"></div>
+                    <div class="service-icon">🌐</div>
+                    <h3 class="service-title">Website Hosting & Setup</h3>
+                    <p class="service-description">Leave the technical details to me. I handle everything from securing your domain and setting up reliable, fast hosting to ensuring your site is always live and secure. Focus on your business, knowing your online home is cared for.</p>
+                </div>
+
+                <!-- Web Design & Development -->
+                <div class="service-card webdesign-card fade-in-up">
+                    <div class="gradient-overlay"></div>
+                    <div class="service-icon">💻</div>
+                    <h3 class="service-title">Web Design & Development</h3>
+                    <p class="service-description">I design and build intuitive, high-performing websites that are perfectly aligned with your business goals. From engaging landing pages to comprehensive sites, I ensure your online presence makes a powerful first impression and drives real, measurable growth.</p>
+                </div>
+                
+                <!-- SEO Optimization -->
+                <!-- <div class="service-card seo-card fade-in-up">
+                    <div class="gradient-overlay"></div>
+                    <div class="service-icon">🔍</div>
+                    <h3 class="service-title">SEO Optimization</h3>
+                    <p class="service-description">I'll optimize your site to rank better on Google and bring in more organic traffic — helping the right people find you, at the right time.</p>
+                </div> -->
+
+                <!-- Speed & Performance Optimization -->
+                <!-- <div class="service-card performance-card fade-in-up">
+                    <div class="gradient-overlay"></div>
+                    <div class="service-icon">📈</div>
+                    <h3 class="service-title">Speed & Performance Optimization</h3>
+                    <p class="service-description">I'll analyze your site's speed and implement best practices to improve performance — because every second counts when clients are browsing.</p>
+                </div> -->
+            </div>
+
+            <div class="services-cta fade-in">
+                <a href="#contact" class="btn btn-primary">Let's Build Something Together</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="projects-container">
+            <div class="projects-header fade-in">
+                <h2>My Recent Work</h2>
+                <p class="projects-subheading">Here are some of the projects I've worked on. Each one presented unique challenges and opportunities to create something special.</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card fade-in-up">
+                    <div class="project-image-container">
+                        <img src="assets/images/projects/landing-page-website.png" alt="Landing Page Portfolio Website" class="project-image has-image" loading="lazy" width="400" height="400" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22600%22 height%3D%22400%22 viewBox%3D%220 0 600 400%22%3E%3Crect fill%3D%22%231a1a2e%22 width%3D%22600%22 height%3D%22400%22%2F%3E%3Cpath fill%3D%22%236AE2FF33%22 d%3D%22M0 0h600v400H0z%22%2F%3E%3Ccircle cx%3D%22120%22 cy%3D%22120%22 r%3D%2280%22 fill%3D%22%236AE2FF66%22%2F%3E%3Ccircle cx%3D%22480%22 cy%3D%22280%22 r%3D%22100%22 fill%3D%22%23A485FF66%22%2F%3E%3Ctext x%3D%22300%22 y%3D%22200%22 font-family%3D%22Arial%22 font-size%3D%22120%22 font-weight%3D%22bold%22 fill%3D%22%23ffffff22%22 text-anchor%3D%22middle%22%3E01%3C%2Ftext%3E%3Ctext x%3D%22300%22 y%3D%22260%22 font-family%3D%22Arial%22 font-size%3D%2224%22 font-weight%3D%22bold%22 fill%3D%22%23ffffff99%22 text-anchor%3D%22middle%22%3EProject%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tech">
+                            <span class="project-tech-tag">WordPress</span>
+                            <span class="project-tech-tag">Elementor</span>
+                            <span class="project-tech-tag">High Conversion</span>
+                            <span class="project-tech-tag">Responsive Design</span>
+                        </div>
+                        <h3 class="project-title">Landing Page Webiste</h3>
+                        <p class="project-description">Designed a high-converting landing page aimed at Selling a Course(Learn Amharic in 30 days). Features include trust signals, service highlights, testimonials, and a bold call-to-action. <br> <b>Challenge & Opportunity:</b> My focus was mastering layout psychology and persuasive copywriting. I used subtle scroll animations to guide users down the page and encourage action.</p>
+                        <div class="project-links">
+                            <a href="https://learnamharic.kesug.com/" class="project-link" target="_blank">
+                                <span class="project-link-icon">🔗</span>
+                                Visit Website
+                            </a>
+                            <a href="https://www.upwork.com/freelancers/~011354f8f9417d6040?p=1951001172968783872" class="project-link" target="_blank">
+                                <span class="project-link-icon">📋</span>
+                                Case Study
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card fade-in-up">
+                    <div class="project-image-container">
+                        <img src="assets/images/projects/lms.jpg" alt="Restaurant Website" class="project-image" loading="lazy" width="400" height="400" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22600%22 height%3D%22400%22 viewBox%3D%220 0 600 400%22%3E%3Crect fill%3D%22%231a1a2e%22 width%3D%22600%22 height%3D%22400%22%2F%3E%3Cpath fill%3D%22%23A485FF33%22 d%3D%22M0 0h600v400H0z%22%2F%3E%3Ccircle cx%3D%22120%22 cy%3D%22120%22 r%3D%2280%22 fill%3D%22%23A485FF66%22%2F%3E%3Ccircle cx%3D%22480%22 cy%3D%22280%22 r%3D%22100%22 fill%3D%22%23FF66C466%22%2F%3E%3Ctext x%3D%22300%22 y%3D%22200%22 font-family%3D%22Arial%22 font-size%3D%22120%22 font-weight%3D%22bold%22 fill%3D%22%23ffffff22%22 text-anchor%3D%22middle%22%3E02%3C%2Ftext%3E%3Ctext x%3D%22300%22 y%3D%22260%22 font-family%3D%22Arial%22 font-size%3D%2224%22 font-weight%3D%22bold%22 fill%3D%22%23ffffff99%22 text-anchor%3D%22middle%22%3EProject%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tech">
+                            <span class="project-tech-tag">PHP</span>
+                            <span class="project-tech-tag">MYSQL</span>
+                            <span class="project-tech-tag">HTML</span>
+                            <span class="project-tech-tag">CSS</span>
+                            <span class="project-tech-tag">JavaScript</span>
+                        </div>
+                        <h3 class="project-title">Library Management System (LMS)</h3>
+                        <p class="project-description">Built a fully functional LMS for managing book checkouts. Admins can add/update/delete books and manage user access. </br> <b>Challenge & Opportunity:</b> This project sharpened my backend development and database design skills. Handling multiple user roles and real-time data interaction taught me how to build scalable systems with clean user experiences.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <span class="project-link-icon">🔗</span>
+                                Visit Website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card fade-in-up">
+                    <div class="project-image-container">
+                        <img src="assets/images/projects/fitness-app.jpg" alt="Fitness App" class="project-image" loading="lazy" width="600" height="400" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22600%22 height%3D%22400%22 viewBox%3D%220 0 600 400%22%3E%3Crect fill%3D%22%231a1a2e%22 width%3D%22600%22 height%3D%22400%22%2F%3E%3Cpath fill%3D%22%23FF66C433%22 d%3D%22M0 0h600v400H0z%22%2F%3E%3Ccircle cx%3D%22120%22 cy%3D%22120%22 r%3D%2280%22 fill%3D%22%23FF66C466%22%2F%3E%3Ccircle cx%3D%22480%22 cy%3D%22280%22 r%3D%22100%22 fill%3D%22%236AE2FF66%22%2F%3E%3Ctext x%3D%22300%22 y%3D%22200%22 font-family%3D%22Arial%22 font-size%3D%22120%22 font-weight%3D%22bold%22 fill%3D%22%23ffffff22%22 text-anchor%3D%22middle%22%3E03%3C%2Ftext%3E%3Ctext x%3D%22300%22 y%3D%22260%22 font-family%3D%22Arial%22 font-size%3D%2224%22 font-weight%3D%22bold%22 fill%3D%22%23ffffff99%22 text-anchor%3D%22middle%22%3EProject%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tech">
+                            <span class="project-tech-tag">WordPress</span>
+                            <span class="project-tech-tag">Elementor</span>
+                            <span class="project-tech-tag">HTML</span>
+                            <span class="project-tech-tag">CSS</span>
+                        </div>
+                        <h3 class="project-title">Abol Digital Solutions</h3>
+                        <p class="project-description">Developed a clean and interactive frontend for a basic SEO analyzer. Users enter a URL and get a simulated SEO score with suggestions on improvements (mocked for presentation). <br> <b>Challenge & Opportunity:</b> This project was about UX clarity and explaining technical metrics in a beginner-friendly way. It’s a great conversation starter for clients curious about how SEO impacts their business.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <span class="project-link-icon">🔗</span>
+                                Visit Website
+                            </a>
+                            <a href="#" class="project-link">
+                                <span class="project-link-icon">📋</span> 
+                                Case Study
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card fade-in-up">
+                    <div class="project-image-container">
+                        <img src="assets/images/projects/landing-page-site.jpg" alt="E-commerce Website" class="project-image" loading="lazy" width="600" height="400" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22600%22 height%3D%22400%22 viewBox%3D%220 0 600 400%22%3E%3Crect fill%3D%22%231a1a2e%22 width%3D%22600%22 height%3D%22400%22%2F%3E%3Cpath fill%3D%22%236AE2FF33%22 d%3D%22M0 0h600v400H0z%22%2F%3E%3Ccircle cx%3D%22120%22 cy%3D%22120%22 r%3D%2280%22 fill%3D%22%236AE2FF66%22%2F%3E%3Ccircle cx%3D%22480%22 cy%3D%22280%22 r%3D%22100%22 fill%3D%22%23A485FF66%22%2F%3E%3Ctext x%3D%22300%22 y%3D%22200%22 font-family%3D%22Arial%22 font-size%3D%22120%22 font-weight%3D%22bold%22 fill%3D%22%23ffffff22%22 text-anchor%3D%22middle%22%3E04%3C%2Ftext%3E%3Ctext x%3D%22300%22 y%3D%22260%22 font-family%3D%22Arial%22 font-size%3D%2224%22 font-weight%3D%22bold%22 fill%3D%22%23ffffff99%22 text-anchor%3D%22middle%22%3EProject%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tech">
+                            <span class="project-tech-tag">WordPress</span>
+                            <span class="project-tech-tag">Elementor</span>
+                            <span class="project-tech-tag">Custom Theme Modifications</span>
+                        </div>
+                        <h3 class="project-title">WordPress Business Website Template</h3>
+                        <p class="project-description">Created a flexible, business-ready WordPress template tailored for local entrepreneurs. Designed with performance and SEO in mind, this template includes contact forms, service showcases, testimonials, and speed-optimized design. </br> <b>Challenge & Opportunity:</b> The main challenge was balancing customization with simplicity so business owners can easily update the content. It’s a strong example of how I empower clients with professional, self-manageable websites.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <span class="project-link-icon">🔗</span>
+                                Visit Website
+                            </a>
+                            <a href="#" class="project-link">
+                                <span class="project-link-icon">📋</span>
+                                Case Study
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card fade-in-up">
+                    <div class="project-image-container">
+                        <img src="assets/images/projects/blog-site.jpg" alt="Blog Website" class="project-image" loading="lazy" width="600" height="400" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22600%22 height%3D%22400%22 viewBox%3D%220 0 600 400%22%3E%3Crect fill%3D%22%231a1a2e%22 width%3D%22600%22 height%3D%22400%22%2F%3E%3Cpath fill%3D%22%23A485FF33%22 d%3D%22M0 0h600v400H0z%22%2F%3E%3Ccircle cx%3D%22120%22 cy%3D%22120%22 r%3D%2280%22 fill%3D%22%23A485FF66%22%2F%3E%3Ccircle cx%3D%22480%22 cy%3D%22280%22 r%3D%22100%22 fill%3D%22%23FF66C466%22%2F%3E%3Ctext x%3D%22300%22 y%3D%22200%22 font-family%3D%22Arial%22 font-size%3D%22120%22 font-weight%3D%22bold%22 fill%3D%22%23ffffff22%22 text-anchor%3D%22middle%22%3E05%3C%2Ftext%3E%3Ctext x%3D%22300%22 y%3D%22260%22 font-family%3D%22Arial%22 font-size%3D%2224%22 font-weight%3D%22bold%22 fill%3D%22%23ffffff99%22 text-anchor%3D%22middle%22%3EProject%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tech">
+                            <span class="project-tech-tag">WordPress</span>
+                            <span class="project-tech-tag">Caching Plugins</span>
+                            <span class="project-tech-tag">Image Optimization</span>
+                            <span class="project-tech-tag">Lighthouse Audits</span>
+                        </div>
+                        <h3 class="project-title">Website Performance Optimization Case Study</h3>
+                        <p class="project-description">Documented the before-and-after performance improvements made to a client WordPress website. Reduced load time from 7s to under 2s, improved Google PageSpeed score, and cut bounce rate by 35%. <br> <b>Challenge & Opportunity:</b> This case study shows my ability to diagnose speed issues and implement real-world fixes that directly improve user experience and search ranking. It highlights the value of hiring me beyond just building websites.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <span class="project-link-icon">🔗</span>
+                                Visit Website
+                            </a>
+                            <a href="#" class="project-link">
+                                <span class="project-link-icon">📋</span>
+                                Case Study
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card fade-in-up">
+                    <div class="project-image-container">
+                        <img src="assets/images/projects/real-estate-site.jpg" alt="Real Estate Website" class="project-image" loading="lazy" width="600" height="400" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22600%22 height%3D%22400%22 viewBox%3D%220 0 600 400%22%3E%3Crect fill%3D%22%231a1a2e%22 width%3D%22600%22 height%3D%22400%22%2F%3E%3Cpath fill%3D%22%23FF66C433%22 d%3D%22M0 0h600v400H0z%22%2F%3E%3Ccircle cx%3D%22120%22 cy%3D%22120%22 r%3D%2280%22 fill%3D%22%23FF66C466%22%2F%3E%3Ccircle cx%3D%22480%22 cy%3D%22280%22 r%3D%22100%22 fill%3D%22%236AE2FF66%22%2F%3E%3Ctext x%3D%22300%22 y%3D%22200%22 font-family%3D%22Arial%22 font-size%3D%22120%22 font-weight%3D%22bold%22 fill%3D%22%23ffffff22%22 text-anchor%3D%22middle%22%3E06%3C%2Ftext%3E%3Ctext x%3D%22300%22 y%3D%22260%22 font-family%3D%22Arial%22 font-size%3D%2224%22 font-weight%3D%22bold%22 fill%3D%22%23ffffff99%22 text-anchor%3D%22middle%22%3EProject%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tech">
+                            <span class="project-tech-tag">WordPress</span>
+                            <span class="project-tech-tag">Elementor</span>
+                            <span class="project-tech-tag">Custom CSS</span>
+                        </div>
+                        <h3 class="project-title">Local Café Website</h3>
+                        <p class="project-description">Designed and developed a modern, responsive website for a fictional local café. This project focused on creating a cozy yet professional aesthetic to reflect the café’s brand. Key features include a daily menu section, image gallery, customer testimonials, and a smooth reservation form. <br> <b>Challenge & Opportunity:</b> Balancing a welcoming vibe with clear call-to-actions was key. This project allowed me to experiment with layout, performance optimization, and subtle animations to craft a site that not only looks great but also drives local engagement.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <span class="project-link-icon">🔗</span>
+                                Visit Website
+                            </a>
+                            <a href="#" class="project-link">
+                                <span class="project-link-icon">📋</span>
+                                Case Study
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Benefits Section -->
+    <section id="benefits">
+        <div class="benefits-container">
+            <div class="benefits-header fade-in">
+                <h2>Why It Matters</h2>
+                <p class="benefits-subheading">Real results. Real growth. Here's what a great website can do for your business:</p>
+            </div>
+
+            <div class="benefits-grid">
+                <!-- Benefit 1 -->
+                <div class="benefit-card fade-in-up">
+                    <div class="gradient-overlay"></div>
+                    <div class="benefit-stat" data-value="70">70%</div>
+                    <h3 class="benefit-title">Businesses With Websites Get 70% More Leads</h3>
+                    <p class="benefit-description">A survey by Blue Corona found that 70% of consumers research businesses online before ever visiting or contacting them.</p>
+                    <div class="benefit-source">
+                        <span class="source-icon">📎</span>
+                        <a href="https://www.bluecorona.com/blog/marketing-statistics-for-small-businesses/" target="_blank">Source – Blue Corona / LSA</a>
+                    </div>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="benefit-card fade-in-up">
+                    <div class="gradient-overlay"></div>
+                    <div class="benefit-stat" data-value="200">200%</div>
+                    <h3 class="benefit-title">SEO Can Boost Your Traffic by 200%+</h3>
+                    <p class="benefit-description">Search Engine Journal reports that well-optimized sites see more than double the traffic from search engines — that's free, targeted visitors.</p>
+                    <div class="benefit-source">
+                        <span class="source-icon">📎</span>
+                        <a href="https://www.searchenginejournal.com/seo-statistics/" target="_blank">Source – Search Engine Journal</a>
+                    </div>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="benefit-card fade-in-up">
+                    <div class="gradient-overlay"></div>
+                    <div class="benefit-stat" data-value="53">53%</div>
+                    <h3 class="benefit-title">A Slow Website Costs You Customers</h3>
+                    <p class="benefit-description">Google research shows that 53% of mobile users leave if a page takes longer than 3 seconds to load.</p>
+                    <div class="benefit-source">
+                        <span class="source-icon">📎</span>
+                        <a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank">Source – Think with Google</a>
+                    </div>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="benefit-card fade-in-up">
+                    <div class="gradient-overlay"></div>
+                    <div class="benefit-stat" data-value="0">0.05s</div>
+                    <h3 class="benefit-title">First Impressions Are Made in 0.05 Seconds</h3>
+                    <p class="benefit-description">Users form an opinion about your website in under 50 milliseconds — make it count with a professional design.</p>
+                    <div class="benefit-source">
+                        <span class="source-icon">📎</span>
+                        <a href="https://www.tandfonline.com/doi/abs/10.1080/01449290500330448" target="_blank">Source – Behaviour & Information Technology Journal</a>
+                    </div>
+                </div>
+
+                <!-- Benefit 5 -->
+                <div class="benefit-card fade-in-up">
+                    <div class="gradient-overlay"></div>
+                    <div class="benefit-stat" data-value="94">94%</div>
+                    <h3 class="benefit-title">94% of People Judge a Business Based on Its Website</h3>
+                    <p class="benefit-description">A Stanford study found that nearly all users base credibility judgments on how professional a site looks.</p>
+                    <div class="benefit-source">
+                        <span class="source-icon">📎</span>
+                        <a href="https://credibility.stanford.edu/" target="_blank">Source – Stanford Web Credibility Research</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container">
+            <div class="contact-intro fade-in">
+                <h2>Let's Build Something Great Together</h2>
+                <p>Whether you're launching your first website or upgrading your online presence — I'm here to help.</p>
+                <p class="promise">Fast response. Clean results. Real growth.</p>
+            </div>
+
+            <div class="form-success-message">
+                <h3>Message Sent Successfully!</h3>
+                <p>Thank you for reaching out. I'll get back to you within 24 hours.</p>
+            </div>
+
+            <form id="contact-form" class="contact-form fade-in">
+                <input type="text" name="user_name" id="user_name" placeholder="Your Name" required />
+                <input type="email" name="user_email" id="user_email" placeholder="Your Email" required />
+                <input type="text" name="subject" id="subject" placeholder="Subject" required />
+                <textarea name="message" id="message" placeholder="Tell me about your project..." required></textarea>
+                <div class="form-status-container">
+                    <div id="form-status" class="form-status"></div>
+                </div>
+                <button type="submit" id="submit-btn">Send Message</button>
+            </form>
+
+            <div class="contact-details fade-in">
+                <p class="small">Prefer direct email? <a href="mailto:bitaniagezahegn3@gmail.com">bitaniagezahegn3@gmail.com</a></p>
+                <p class="small">Or reach me via <a href="https://www.linkedin.com/in/bitania-gezahegn-62bb17249" target="_blank">LinkedIn</a> / <a href="https://github.com/BitaniaGezahegn" target="_blank">GitHub</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-logo">Bitania Gezahegn</p>
+
+            <ul class="footer-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <p class="footer-thanks">
+                Thanks for visiting. I'd love to bring your ideas to life.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://github.com/BitaniaGezahegn" target="_blank" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/bitania-gezahegn-62bb17249" target="_blank" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://www.instagram.com/bita_nia12" target="_blank" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://t.me/ElChapo_ET" target="_blank" aria-label="Telegram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4L3 11L10 14L13 21L20 4z"></path></svg>
+                    <span>Telegram</span>
+                </a>
+                <a href="mailto:bitaniagezahegn3@gmail.com" aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span>Email</span>
+                </a>
+                <a href="tel:+251985134209" aria-label="Phone">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <span>+251 985 134 209</span>
+                </a>
+            </div>
+
+            <p class="footer-copy">&copy; 2025 Bitania Gezahegn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Performance optimization script - load first -->
+    <script src="js/performance.js"></script>
+
+    <!-- EmailJS for contact form -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Main JavaScript - loaded at the end for performance -->
+    <script src="js/main.js" defer></script>
+    <script src="js/services.js" defer></script>
+    <script src="js/benefits.js" defer></script>
+    <script src="js/projects.js" defer></script>
+    <script src="js/contact.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+</body>
+</html>
